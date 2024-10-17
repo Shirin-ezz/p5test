@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Selector - Problem 5</title>
+    <script>
+        // JavaScript to populate <select> list and handle adding/clearing states
+        window.onload = function() {
+            // Array of states
+            const states = ["California", "Texas", "Florida", "New York", "Illinois", "Pennsylvania", "Ohio", "Georgia", "North Carolina", "Michigan"];
+            
+            // Populate the <select> element with <option> elements
+            const stateSelect = document.getElementById("stateSelect");
+            states.forEach(state => {
+                let option = document.createElement("option");
+                option.value = state;
+                option.textContent = state;
+                stateSelect.appendChild(option);
+            });
+
+            // Add event listener for "Add State" button
+            document.getElementById("addStateButton").onclick = function() {
+                let selectedState = stateSelect.value;
+                if (selectedState) {
+                    let stateDiv = document.getElementById("selectedStates");
+                    stateDiv.innerHTML += selectedState + "<br>";
+                }
+            };
+
+            // Add event listener for "Clear States" button
+            document.getElementById("clearStatesButton").onclick = function() {
+                document.getElementById("selectedStates").innerHTML = "";
+            };
+        };
+    </script>
+</head>
+<body>
+    <h2>Select a State</h2>
+
+    <!-- Select element displaying a list (not a dropdown) -->
+    <select id="stateSelect" size="10"></select>
+    <button id="addStateButton" type="button">Add State</button>
+
+    <br><br>
+
+    <!-- Div with a border to display selected states -->
+    <div id="selectedStates" style="border: 1px solid black; padding: 10px; width: 200px; min-height: 50px;"></div>
+    <button id="clearStatesButton" type="button">Clear States</button>
+
+</body>
+</html>
